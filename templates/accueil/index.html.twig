@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mobilité
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" style="background-image: url(assets/images/niamey.jpg);"></div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</section>
+	<section class="search-sec">
+		<div class="container">
+			<form action="#" method="post" novalidate="novalidate">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+								<label for="type" style="color: #fff;">Je cherche</label>
+								<select class="form-control search-slt" id="type">
+									<option>Une maison</option>
+									<option>Un appartement</option>
+								</select>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+								<label for="offer" style="color: #fff;">Pour</label>
+								<select class="form-control search-slt" id="offer">
+									<option>Location</option>
+									<option>Achat</option>
+									<option>Troc</option>
+								</select>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+								<label for="location" style="color: #fff;">Autours de</label>
+								<select class="form-control search-slt" id="location">
+									<option>Niamey</option>
+									<option>Tillabery</option>
+									<option>Tahoua</option>
+									<option>Maradi</option>
+									<option>Zinder</option>
+								</select>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
+								<button type="button" class="btn btn-warning wrn-btn" style="margin-top: 31px;" routerlink="/housing">Recherche</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+{% endblock %}

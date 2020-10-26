@@ -1,0 +1,152 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: 0.75rem;
+}
+
+body {
+    background-color: #FCFAFA;
+}
+
+.btn-primary {
+    background-color: #444B09;
+    border          : 1px solid #444B09;
+}
+
+.color-primary {
+    color: #444B09;
+}
+
+
+hr.underline {
+    width     : 15%;
+    border-top: 2px solid rgba(0, 0, 0, 1);
+}
+
+hr.footer-line {
+    border-top: 1px solid #666;
+}
+
+.carousel-item {
+    height                 : 85vh;
+    min-height             : 350px;
+    background             : no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size   : cover;
+    -o-background-size     : cover;
+    background-size        : cover;
+}
+
+.search-sec {
+    padding   : 2rem;
+    position  : relative;
+    top       : -145px;
+    background: rgba(68, 75, 9, 0.664);
+    z-index   : 2;
+}
+
+.search-slt {
+    display         : block;
+    width           : 100%;
+    font-size       : 0.875rem;
+    line-height     : 1.5;
+    color           : #55595c;
+    background-color: #fff;
+    background-image: none;
+    border          : 1px solid #ccc;
+    height          : calc(3rem + 2px) !important;
+    border-radius   : 0;
+}
+
+.wrn-btn {
+    width           : 100%;
+    font-size       : 16px;
+    font-weight     : 400;
+    text-transform  : capitalize;
+    height          : calc(3rem + 2px) !important;
+    border-radius   : 0;
+    background-color: #FD8B06;
+    border          : 1px solid #FD8B06;
+}
+
+#home-content {
+    margin-top: -125px;
+    ;
+}
+
+
+.carousel-caption {
+    position      : absolute;
+    right         : 15%;
+    bottom        : 20px;
+    left          : 15%;
+    z-index       : 10;
+    padding-top   : 20px;
+    padding-bottom: 25vh;
+    color         : #fff;
+    text-align    : center;
+}
+
+.carousel-caption {
+    left          : 8%;
+    width         : 84%;
+    vertical-align: middle;
+    padding-bottom: 25vh;
+}
+
+@media (min-width: 576px) {
+    .carousel-caption {
+        padding-bottom: 20px;
+        text-align    : center;
+    }
+
+    .btn-cta {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .carousel-caption {
+        left          : 8%;
+        width         : 84%;
+        vertical-align: middle;
+        padding-bottom: 20vh;
+    }
+
+    .btn-cta {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        padding-bottom: 20px;
+        text-align    : center;
+    }
+
+    .btn-cta {
+        margin-top: 20px;
+    }
+
+    .carousel-caption {
+        padding-bottom: 60vh;
+        font-size     : .6rem;
+    }
+
+    .carousel-caption h2 {
+        font-size: .98rem;
+    }
+
+    .carousel-item {
+        min-height: 100vh;
+    }
+
+    #floating-nav {
+        padding-left : 24px;
+        padding-right: 24px;
+    }
+
+    .search-sec {
+        top: -360px;
+    }
+
+}
