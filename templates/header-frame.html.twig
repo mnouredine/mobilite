@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mobilité
+{% endblock %}
+{% block body %}
+	{% include 'navbar.html.twig' %}
+	<section>
+		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" style="background-image: url(assets/images/niamey.jpg);"></div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</section>
+	<section class="container nav-sec">
+		<nav class="navigation">
+			<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link {% if app.request.get('_route') == 'accueil' %}
+																														active
+																													{% endif %}" href="{{ path('accueil') }}" aria-selected="true">ITINERAIRE DES BUS</a>
+				<a class="nav-item nav-link {% if app.request.get('_route') == 'accueil_arrets' %}
+																														active
+																													{% endif %}" href="{{ path('accueil_arrets') }}" aria-selected="false">ARRETS DE BUS</a>
+				<a class="nav-item nav-link {% if app.request.get('_route') == 'accueil_document' %}
+																														active
+																													{% endif %}" href="{{ path('accueil_document') }}" aria-selected="false">DOCUMENTS DE TRANSPORT</a>
+			</div>
+		</nav>
+	</section>
+	<section>
+		{% block content %}{% endblock %}
+	</section>
+
+{% endblock %}

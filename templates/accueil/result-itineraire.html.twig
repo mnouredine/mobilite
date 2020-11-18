@@ -7,12 +7,12 @@
 	<section class="search-sec">
 		<div class="container">
 			<div class="row"></div>
-			<form action="{{ path('itineraire') }}" method="post" novalidate="novalidate">
+			<form action="#" method="post" novalidate="novalidate">
 				<div class="row">
 					<div class="col-12">
 						<div class="row">
 							<div class="col-md-5 col-sm-12 p-0">
-								<div class="input-group">
+								<div class="input-group mb-2">
 									<div class="input-group-prepend">
 										<div class="home-form input-group-text">Départ:</div>
 									</div>
@@ -20,7 +20,7 @@
 								</div>
 							</div>
 							<div class="col-md-5 col-sm-12 p-0">
-								<div class="input-group">
+								<div class="input-group mb-2">
 									<div class="input-group-prepend">
 										<div class="home-form input-group-text end">Arrivée:</div>
 									</div>
@@ -28,7 +28,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-12 p-0">
-								<button type="submit" class="btn btn-default wrn-btn">Recherche</button>
+								<button type="button" class="btn btn-default wrn-btn">Recherche</button>
 							</div>
 						</div>
 					</div>
@@ -36,7 +36,25 @@
 			</form>
 		</div>
 	</section>
-	<section>
-		<div id="map" style="width: 100%; min-height: 50vh;"></div>
+	<section style="padding-top: 12px;">
+		<div class="container">
+			<div class="row">
+				{% for itineraire in itineraires %}
+					<div class="col-12">
+						<div class="option mb-2">
+							<div class="option-image">
+								<span style="font-weight: 900;">UNIVERSITE</span>
+							</div>
+							<div class="option-info">
+								<h5 class="option-title">{{ itineraire.nom }}</h5>
+							</div>
+							<div class="option-check">
+								<button class="btn btn-primary btn-sm">{{ itineraire.statut }}</button>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 	</section>
 {% endblock %}
