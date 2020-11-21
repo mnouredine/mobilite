@@ -638,3 +638,66 @@ ul.nav.nav-tabs.sub-menu .nav-link.active {
     background-color: #fff;
     border-bottom   : 3px solid #F5B02E;
 }
+
+.arret-list {
+    border-left: #000 solid 2px;
+}
+
+/* Search form */
+.searchbar {
+    margin       : 12px 0px;
+    height       : 40px;
+    border-radius: 10px;
+    border       : 2px solid #F5B02E;
+}
+
+.search_input {
+    border      : 0;
+    outline     : 0;
+    background  : none;
+    line-height : 35px;
+    padding-left: 24px;
+    width       : calc(100% - 40px);
+    font-weight : bold;
+}
+
+.search_icon {
+    height         : 40px;
+    width          : 40px;
+    float          : right;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    color          : #F5B02E;
+    text-decoration: none;
+}
+
+.search_icon:hover {
+    text-decoration: none;
+    color          : #F5B02E;
+}
+
+/* card */
+
+.document .card-img {
+    height     : 50px;
+    line-height: 40px;
+    width      : auto;
+    margin     : auto;
+    text-align : center;
+}
+
+.document .option-image {
+    border: none;
+}
+
+.document .option {
+    box-shadow        : none;
+    padding           : 12px;
+    min-height        : 84px;
+    background-color  : #fff;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.59);
+    -moz-box-shadow   : 0px 2px 2px 0px rgba(0, 0, 0, 0.59);
+    box-shadow        : 0px 2px 2px 0px rgba(0, 0, 0, 0.59);
+    border-radius     : 8px;
+}

@@ -1,0 +1,61 @@
+{% extends 'itineraire/itineraire-frame.html.twig' %}
+
+{% block subcontent %}
+	<section style="padding: 12px 0px;">
+		<div class="container">
+			<h3>Afficher les points d'arrêts</h3>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					{{ form_start(form, {'attr': {'id': 'itineraire_arret_form'}}) }}
+					{{ form_errors(form) }}
+					<div class="row">
+						<div class="col-12">
+							{{ form_label(form.compagnie, "Compagnie ", {'label_attr': {'class': 'form-label'}}) }}
+							<div class="form-group form-float">
+								<div class="form-line">
+									{{ form_widget(form.compagnie, {'attr': {'class': 'form-control' } }) }}
+									{{ form_errors(form.compagnie) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							{{ form_label(form.itineraire, "Itinéraire", {'label_attr': {'class': 'form-label'}}) }}
+							<div class="form-group form-float">
+								<div class="form-line">
+									{{ form_widget(form.itineraire, {'attr': {'class': 'form-control' } }) }}
+									{{ form_errors(form.itineraire) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-12 text-right">
+							{{ form_widget(form.save, {'attr': {'class': 'btn btn-warning'}}) }}
+							{{ form_rest(form) }}
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6 arret-list">
+					<div class="row">
+						{% for arret in arrets %}
+							<div class="card bus-stop col-12">
+								<div class="row no-gutters">
+									<div class="col-md-2" style="padding: 10px;">
+										<img src="{{ asset('assets/images/bus-station.png' )}}" class="card-img" alt="Bus Station" width="50px">
+									</div>
+									<div class="col-md-10">
+										<div class="card-body" style="padding: 12px;">
+											<h5 class="card-title" style="margin-bottom: 0px;">Card title</h5>
+											<p class="card-text">
+												<small class="text-muted">Last updated 3 mins ago</small>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

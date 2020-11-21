@@ -36,6 +36,12 @@ class Passage
     private $coordonnees;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Compagnie", inversedBy="compagnie")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    private $compagnie;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Localite", inversedBy="localite")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
@@ -90,6 +96,18 @@ class Passage
     public function setLocalite(?Localite $localite): self
     {
         $this->localite = $localite;
+
+        return $this;
+    }
+
+    public function getCompagnie(): ?Compagnie
+    {
+        return $this->compagnie;
+    }
+
+    public function setCompagnie(?Compagnie $compagnie): self
+    {
+        $this->compagnie = $compagnie;
 
         return $this;
     }

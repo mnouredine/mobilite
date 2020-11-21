@@ -7,14 +7,14 @@
 		<div class="container">
 			<div class="row menu-head">
 				<div class="col-xs-12 col-md-6 menu-title-section">
-					<img src="{{ asset('assets/images/direction.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
-					<span class="title">Itinéraires</span>
+					<img src="{{ asset('assets/images/bus-station.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
+					<span class="title">Arrêts de bus</span>
 				</div>
 				{% if app.request.get('_route') == 'itineraire_list' %}
 					<div class="col-xs-12 col-md-6 menu-button-section">
-						<a class="btn btn-warning btn-sm float-right font-weight-bold" href="{{ path('itineraire_ajout') }}">
+						<a class="btn btn-warning btn-sm float-right font-weight-bold" href="{{ path('arret_ajout') }}">
 							<i class="fa fa-plus"></i>
-							Ajouter un itineraire</a>
+							Ajouter un arrêt</a>
 					</div>
 				{% endif %}
 			</div>
@@ -24,10 +24,7 @@
 		<div class="container">
 			<ul class="nav nav-tabs sub-menu">
 				<li class="nav-item">
-					<a class="nav-link {% if app.request.get('_route') == 'itineraire_list' %} active {% endif %}" href="{{ path('itineraire_list') }}">Tous les Itinéraires</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link {% if app.request.get('_route') == 'itineraire_arret' %} active {% endif %}" href="{{ path('itineraire_arret') }}">Points d'arrêt</a>
+					<a class="nav-link {% if app.request.get('_route') == 'arret_list' %} active {% endif %}" href="{{ path('arret_list') }}">Tous les Arrêts</a>
 				</li>
 			</ul>
 		</div>

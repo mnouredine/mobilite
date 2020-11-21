@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Itineraire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder as QueryQueryBuilder;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -36,15 +38,12 @@ class ItineraireRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Itineraire
+    public function findByCompagnie($value)
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->innerJoin('i.compagnie', 'i_compagnie')
+            ->andWhere('i_compagnie.id = :id')
+            ->setParameter('id', $value)
+            ->getQuery();
     }
-    */
 }

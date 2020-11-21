@@ -1,0 +1,75 @@
+{% extends 'document/document-frame.html.twig' %}
+
+{% block subcontent %}
+	<section style="padding: 12px 0px;">
+		<div class="container">
+			<h3>Modifier le document</h3>
+			<div class="row justify-content-center">
+				<div class="col-12">
+					{{ form_start(form, {'attr': {'id': 'document_form'}}) }}
+					{{ form_errors(form) }}
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="row">
+								<div class="col-12">
+									{{ form_label(form.titre, "Titre ", {'label_attr': {'class': 'form-label'}}) }}
+									<div class="form-group form-float">
+										<div class="form-line">
+											{{ form_widget(form.titre, {'attr': {'class': 'form-control' } }) }}
+											{{ form_errors(form.titre) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-12">
+									{{ form_label(form.legende, "Légende", {'label_attr': {'class': 'form-label'}}) }}
+									<div class="form-group form-float">
+										<div class="form-line">
+											{{ form_widget(form.legende, {'attr': {'class': 'form-control' } }) }}
+											{{ form_errors(form.legende) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-12">
+									{{ form_label(form.info, "Autres infos", {'label_attr': {'class': 'form-label'}}) }}
+									<div class="form-group form-float">
+										<div class="form-line">
+											{{ form_widget(form.info, {'attr': {'class': 'form-control' } }) }}
+											{{ form_errors(form.info) }}
+										</div>
+									</div>
+								</div>
+								<div class="col-12">
+									{{ form_label(form.description, "Description", {'label_attr': {'class': 'form-label'}}) }}
+									<div class="form-group form-float">
+										<div class="form-line">
+											{{ form_widget(form.description, {'attr': {'class': 'form-control' } }) }}
+											{{ form_errors(form.description) }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							{{ form_label(form.contenu, "Contenu", {'label_attr': {'class': 'form-label'}}) }}
+							<div class="form-group form-float">
+								<div class="form-line">
+									{{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'rows': 16 } }) }}
+									{{ form_errors(form.contenu) }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-right">
+					<button class="btn btn-secondary back home-btn" type="button">
+						Annuler</button>
+					{{ form_widget(form.save, {'attr': {'class': 'btn btn-warning'}}) }}
+					{{ form_rest(form) }}
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

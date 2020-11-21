@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mobilité
+{% block title %}Document
 {% endblock %}
 {% block body %}
 	<nav class="navbar fixed-top navbar-expand-lg admin">
@@ -39,5 +39,19 @@
 			</div>
 		</div>
 	</nav>
-	{% block content %}{% endblock %}
+	<section class="boar-menu">
+		<div class="container">
+			<div class="row menu-head">
+				<div class="col-xs-12 col-md-6 menu-title-section">
+					<img src="{{ asset('assets/images/text-document.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
+					<span class="title">{{ document.nom }}</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="content">
+		<div class="container">
+			<div class="row"></div>
+		</div>
+	</section>
 {% endblock %}

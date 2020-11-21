@@ -1,3 +1,27 @@
 {% extends 'header-frame.html.twig' %}
 
-{% block content %}{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="searchbar">
+					<input class="search_input" type="text" name="" placeholder="Recherche...">
+					<a href="#" class="search_icon">
+						<i class="fas fa-search"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-12 document mb-2">
+				<div class="option">
+					<div class="option-image">
+						<img src="{{ asset('assets/images/text-document.png' )}}" class="card-img img-responsive" alt="Document">
+					</div>
+					<div class="option-info">
+						<h5 class="option-title">Comment obtenir un titre de transport?</h5>
+						<p>Légende du text</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
