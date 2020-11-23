@@ -1,0 +1,33 @@
+{% extends 'admin-frame.html.twig' %}
+
+{% block title %}Documents
+{% endblock %}
+{% block content %}
+	<section class="boar-menu">
+		<div class="container">
+			<div class="row menu-head">
+				<div class="col-xs-12 col-md-6 menu-title-section">
+					<img src="{{ asset('assets/images/text-document.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
+					<span class="title">Documents de transport</span>
+				</div>
+				{% if app.request.get('_route') == 'document_list' %}
+					<div class="col-xs-12 col-md-6 menu-button-section">
+						<a class="btn btn-warning btn-sm float-right font-weight-bold" href="{{ path('document_ajout') }}">
+							<i class="fa fa-plus"></i>
+							Ajouter un document</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	<section style="background-color: #fff">
+		<div class="container">
+			<ul class="nav nav-tabs sub-menu">
+				<li class="nav-item">
+					<a class="nav-link {% if app.request.get('_route') == 'document_list' %} active {% endif %}" href="{{ path('document_list') }}">Tous les documents</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+	{% block subcontent %}{% endblock %}
+{% endblock %}
