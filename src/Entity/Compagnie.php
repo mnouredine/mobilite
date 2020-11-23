@@ -21,6 +21,11 @@ class Compagnie
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logo;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -79,5 +84,17 @@ class Compagnie
     public function __toString(): ?string
     {
         return $this->nom . ' - ' . $this->description;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
+
+        return $this;
     }
 }

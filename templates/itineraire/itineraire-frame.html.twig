@@ -10,7 +10,7 @@
 					<img src="{{ asset('assets/images/direction.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
 					<span class="title">Itinéraires</span>
 				</div>
-				{% if app.request.get('_route') == 'itineraire_list' %}
+				{% if app.request.get('_route') == 'itineraire_liste' %}
 					<div class="col-xs-12 col-md-6 menu-button-section">
 						<a class="btn btn-warning btn-sm float-right font-weight-bold" href="{{ path('itineraire_ajout') }}">
 							<i class="fa fa-plus"></i>
@@ -24,7 +24,7 @@
 		<div class="container">
 			<ul class="nav nav-tabs sub-menu">
 				<li class="nav-item">
-					<a class="nav-link {% if app.request.get('_route') == 'itineraire_list' %} active {% endif %}" href="{{ path('itineraire_list') }}">Tous les Itinéraires</a>
+					<a class="nav-link {% if app.request.get('_route') == 'itineraire_liste' %} active {% endif %}" href="{{ path('itineraire_liste') }}">Tous les Itinéraires</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link {% if app.request.get('_route') == 'itineraire_arret' %} active {% endif %}" href="{{ path('itineraire_arret') }}">Points d'arrêt</a>
