@@ -25,7 +25,10 @@
 									<td>{{ itineraire.compagnie.nom }}</td>
 									<td>{{ itineraire.statut }}</td>
 									<td>
-										<a class="btn btn-info btn-sm">
+										<a class="btn btn-warning btn-sm" href="{{ path('itineraire_arret', {compagnie_id: itineraire.compagnie.id, itineraire_id: itineraire.id}) }}">
+											<i class="fa fa-eye"></i>
+										</a>
+										<a class="btn btn-info btn-sm" href="{{ path('itineraire_modification', {id: itineraire.id}) }}">
 											<i class="fa fa-edit"></i>
 										</a>
 										<a class="btn btn-danger btn-sm">

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Arret;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,9 +15,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ArretRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $entityManager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Arret::class);
+        $this->entityManager = $entityManager;
     }
 
     // /**

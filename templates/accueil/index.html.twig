@@ -2,41 +2,46 @@
 
 {% block title %}Accueil
 {% endblock %}
-
+{% block tagline %}
+	<h3 style="color: #fff;">Trouvez plus facilement les horaires de passage et les arrêts des bus de l’université et de la SOTRUNI</h3>
+{% endblock %}
 {% block content %}
 	<section class="search-sec">
 		<div class="container">
-			<div class="row"></div>
-			<form action="{{ path('itineraire') }}" method="post" novalidate="novalidate">
-				<div class="row">
-					<div class="col-12">
-						<div class="row">
-							<div class="col-md-5 col-sm-12 p-0">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="home-form input-group-text">Départ:</div>
+			{% if app.request.get('_route') == 'recherche_itineraire' %}
+				<form action="{{ path('itineraire') }}" method="post" novalidate="novalidate">
+				{% else %}
+					<form action="{{ path('recherche_itineraire') }}" method="post" novalidate="novalidate">
+					{% endif %}
+					<div class="row">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-md-5 col-sm-12 p-0">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="home-form input-group-text">Départ:</div>
+										</div>
+										<input type="text" name="field_from" class="form-control search-slt" id="from">
 									</div>
-									<input type="text" class="form-control search-slt" id="from">
 								</div>
-							</div>
-							<div class="col-md-5 col-sm-12 p-0">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="home-form input-group-text end">Arrivée:</div>
+								<div class="col-md-5 col-sm-12 p-0">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="home-form input-group-text end">Arrivée:</div>
+										</div>
+										<input type="text" name="field_to" class="form-control search-slt" id="to">
 									</div>
-									<input type="text" class="form-control search-slt" id="to">
 								</div>
-							</div>
-							<div class="col-md-2 col-sm-12 p-0">
-								<button type="submit" class="btn btn-default wrn-btn">Recherche</button>
+								<div class="col-md-2 col-sm-12 p-0">
+									<button type="submit" class="btn btn-default wrn-btn">Recherche</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
-	</section>
-	<section>
-		<div id="map" style="width: 100%; min-height: 50vh;"></div>
-	</section>
-{% endblock %}
+				</form>
+			</div>
+		</section>
+		<section>
+			<div id="map" style="width: 100%; min-height: 50vh;"></div>
+		</section>
+	{% endblock %}

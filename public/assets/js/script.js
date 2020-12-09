@@ -20,6 +20,16 @@ $(document).ready(function () {
         window.location = '../../../itineraire/arret/' + itin + '/' + valueSelected;
     });
 
+    $('.itineraire-item').click(function () {
+        // console.log('Identifiant itineraire: ' + $(this).data('id'));
+        window.location = '../../../itineraire/infos/' + $(this).data('id');
+    });
+
+    $('.document-item').click(function () {
+        // console.log('Identifiant itineraire: ' + $(this).data('id'));
+        window.location = '../../../document/details/' + $(this).data('id');
+    });
+
     // Mapping
     var mymap = L.map('map').setView([13.51915, 2.09445], 15);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm91cm1vdW4iLCJhIjoiY2toZ2h6enVuMGx2OTJ4bndzNnZhbTA1MSJ9.ou3FRi4iWT-ct74OZkjSbA', {
@@ -31,6 +41,19 @@ $(document).ready(function () {
         accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);
 
+    // var marker = L.marker([13.51915, 2.09445]).addTo(mymap);
     var marker = L.marker([13.51915, 2.09445]).addTo(mymap);
+
+    mymap.locate({setView : true, maxZoom: 18, zoomOffset: -1});
+
+    mymap.on('locationfound', function(ev){
+        // if (!marker) {
+        //     marker = L.marker(ev.latlng);
+        // } else {
+        //     marker.setLatLng(ev.latlng);
+        // }
+        console.log('Your current location is: ' + ev.latlng);
+    });
+
 
 });
