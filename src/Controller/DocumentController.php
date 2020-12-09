@@ -27,8 +27,9 @@ class DocumentController extends AbstractController
      */
     public function index(): Response
     {
+        $documents = $this->documentRepository->findAll();
         return $this->render('document/index.html.twig', [
-            'controller_name' => 'DocumentController',
+            'documents' => $documents,
         ]);
     }
 
@@ -92,7 +93,7 @@ class DocumentController extends AbstractController
     /**
      * @Route("/document/details/{id}", name="document_details")
      */
-    public function detailsDocument(Request $request, int $id): Response
+    public function detailsDocument(int $id): Response
     {
         $document = $this->documentRepository->findOneBy(['id' => $id]);
         return $this->render('document/details-document.html.twig', [

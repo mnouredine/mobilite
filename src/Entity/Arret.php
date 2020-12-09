@@ -14,14 +14,19 @@ class Arret
     use Timestamps;
 
     /**
-     * @ORM\Id()
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Itineraire", inversedBy="itineraire")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $itineraire;
 
     /**
-     * @ORM\Id()
      * @ORM\ManyToOne(targetEntity="Passage", inversedBy="passage")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */

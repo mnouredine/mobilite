@@ -1,5 +1,9 @@
 {% extends 'header-frame.html.twig' %}
-
+{% block title %}Documents de transport
+{% endblock %}
+{% block tagline %}
+	<h3 style="color: #fff;">Vous informer sur les procédures et modalités d’obtention des documents de transports ( Carte grise, titre de transport, permis de conduire, etc..)</h3>
+{% endblock %}
 {% block content %}
 	<div class="container">
 		<div class="row">
@@ -11,17 +15,19 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-12 document mb-2">
-				<div class="option">
-					<div class="option-image">
-						<img src="{{ asset('assets/images/text-document.png' )}}" class="card-img img-responsive" alt="Document">
-					</div>
-					<div class="option-info">
-						<h5 class="option-title">Comment obtenir un titre de transport?</h5>
-						<p>Légende du text</p>
+			{% for document in documents %}
+				<div class="col-12 document mb-2">
+					<div class="option document-item mb-2" data-id="{{ document.id }}">
+						<div class="option-image">
+							<img src="{{ asset('assets/images/text-document.png' )}}" class="card-img img-responsive" alt="Document">
+						</div>
+						<div class="option-info">
+							<h5 class="option-title">{{ document.titre }}</h5>
+							<p>{{ document.legende }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}

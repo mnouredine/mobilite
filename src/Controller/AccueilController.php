@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\ItineraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,12 +11,10 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class AccueilController extends AbstractController
 {
-    private $itineraireRepository;
     private $tokenManager;
 
-    public function __construct(ItineraireRepository $itineraireRepository, CsrfTokenManagerInterface $tokenManager = null)
+    public function __construct(CsrfTokenManagerInterface $tokenManager = null)
     {
-        $this->itineraireRepository = $itineraireRepository;
         $this->tokenManager = $tokenManager;
     }
 
@@ -28,17 +25,6 @@ class AccueilController extends AbstractController
     {
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
-        ]);
-    }
-
-    /**
-     * @Route("/itineraire", name="itineraire",  methods={"POST"})
-     */
-    public function itineraire()
-    {
-        $itineraires = $this->itineraireRepository->findAll();
-        return $this->render('accueil/result-itineraire.html.twig', [
-            'itineraires' => $itineraires,
         ]);
     }
 

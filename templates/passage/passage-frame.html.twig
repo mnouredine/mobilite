@@ -2,12 +2,13 @@
 
 {% block title %}Itinéraires
 {% endblock %}
+
 {% block content %}
 	<section class="boar-menu">
 		<div class="container">
 			<div class="row menu-head">
 				<div class="col-xs-12 col-md-6 menu-title-section">
-					<img src="{{ asset('assets/images/bus-station.png' )}}" class="logo-icon img-responsive" height="40" alt="Responsive image">
+					<img src="{{ asset('assets/images/bus-station.png' )}}" class="logo-icon" height="40" alt="Responsive image">
 					<span class="title">Arrêts de bus</span>
 				</div>
 				{% if app.request.get('_route') == 'passage_list' %}
