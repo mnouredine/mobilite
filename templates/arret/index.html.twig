@@ -15,10 +15,10 @@
 				{% for passage in passages %}
 					<div class="card bus-stop">
 						<div class="row no-gutters">
-							<div class="col-md-2" style="padding: 10px;">
+							<div class="col-2" style="padding: 10px;">
 								<img src="{{ asset('assets/images/bus-station.png' )}}" class="card-img" alt="Bus Station" width="50px">
 							</div>
-							<div class="col-md-10">
+							<div class="col-10">
 								<div class="card-body" style="padding: 12px;">
 									<h5 class="card-title" style="margin-bottom: 0px;">{{ passage.nom }}</h5>
 									<p class="card-text">
@@ -30,7 +30,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			<div id="map" class="col-xs-12 col-md-8"></div>
+			<div id="map" class="col-xs-12 col-md-8 arret-map"></div>
 		</div>
 	</div>
 {% endblock %}

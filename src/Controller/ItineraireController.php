@@ -214,7 +214,7 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire/infos/{id}", name="itineraire_ajout")
+     * @Route("/itineraire/infos/{id}", name="itineraire_infos")
      */
     public function infosItineraire(int $id): Response
     {
