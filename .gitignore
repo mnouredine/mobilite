@@ -11,7 +11,7 @@
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
-.env
+/.env
 .phpunit
 .phpunit.result.cache
 /phpunit.xml
