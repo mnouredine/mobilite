@@ -35,7 +35,7 @@ class ArretController extends AbstractController
      */
     public function accueilArrets(Request $request)
     {
-        $passages = $this->passageRepository->findAll();
+        $passages = [];
         return $this->render('arret/index.html.twig', [
             'passages' => $passages,
         ]);

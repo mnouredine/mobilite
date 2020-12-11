@@ -94,8 +94,8 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire", name="itineraire_liste_base")
-     * @Route("/itineraire/liste", name="itineraire_liste")
+     * @Route("/admin/itineraire", name="itineraire_liste_base")
+     * @Route("/admin/itineraire/liste", name="itineraire_liste")
      */
     public function listItineraire(): Response
     {
@@ -106,7 +106,7 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire/ajouter", name="itineraire_ajout")
+     * @Route("/admin/itineraire/ajouter", name="itineraire_ajout")
      */
     public function ajoutItineraire(Request $request): Response
     {
@@ -129,7 +129,7 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire/modifier/{id}", name="itineraire_modification")
+     * @Route("/admin/itineraire/modifier/{id}", name="itineraire_modification")
      */
     public function modifierItineraire(Request $request, int $id): Response
     {
@@ -153,7 +153,7 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire/arret/{compagnie_id}/{itineraire_id}", name="itineraire_arret")
+     * @Route("/admin/itineraire/arret/{compagnie_id}/{itineraire_id}", name="itineraire_arret")
      */
     public function itineraireArret(Request $request, int $compagnie_id = 0, int $itineraire_id = 0): Response
     {
@@ -194,7 +194,7 @@ class ItineraireController extends AbstractController
     }
 
     /**
-     * @Route("/itineraire/recherche/{from}/{to}", name="itineraire_recherche")
+     * @Route("/admin/itineraire/recherche/{from}/{to}", name="itineraire_recherche")
      */
     public function itineraireSearch(Request $request, string $from = '', string $to = ''): Response
     {

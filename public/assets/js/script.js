@@ -47,7 +47,4 @@ $(document).ready(function () {
 
     mymap.locate({setView : true, maxZoom: 18, zoomOffset: -1});
 
-    
-
-
 });

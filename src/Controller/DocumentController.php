@@ -34,7 +34,7 @@ class DocumentController extends AbstractController
     }
 
     /**
-     * @Route("/document/list", name="document_list")
+     * @Route("/admin/document/list", name="document_list")
      */
     public function listeDocuments(): Response
     {
@@ -45,7 +45,7 @@ class DocumentController extends AbstractController
     }
 
     /**
-     * @Route("/document/ajouter", name="document_ajout")
+     * @Route("/admin/document/ajouter", name="document_ajout")
      */
     public function ajouterDocument(Request $request): Response
     {
@@ -68,7 +68,7 @@ class DocumentController extends AbstractController
     }
 
     /**
-     * @Route("/document/modifier/{id}", name="document_modification")
+     * @Route("/admin/document/modifier/{id}", name="document_modification")
      */
     public function modifierDocument(Request $request, int $id): Response
     {

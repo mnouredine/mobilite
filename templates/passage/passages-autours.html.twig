@@ -47,7 +47,8 @@ zoomOffset: -1,
 accessToken: 'your.mapbox.access.token'
 });
 baseMap.addTo(arretMap);
-var marker = L.marker([{{ currentLocation }}]).addTo(arretMap);{% for passage in passages %}marker = L.marker([{{ passage.coordonnees }}]).addTo(arretMap);{% endfor %}
+var marker = L.marker([{{ currentLocation }}]).addTo(arretMap).bindPopup('Vous êtes ici.').openPopup();{% for passage in passages %}
+L.marker([{{ passage.coordonnees }}]).addTo(arretMap);{% endfor %}
 });
 	</script>
 {% endblock %}

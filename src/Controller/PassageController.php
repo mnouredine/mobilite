@@ -33,7 +33,7 @@ class PassageController extends AbstractController
     }
 
     /**
-     * @Route("/passage/list", name="passage_list")
+     * @Route("/admin/passage/list", name="passage_list")
      */
     public function listPassages(): Response
     {
@@ -44,7 +44,7 @@ class PassageController extends AbstractController
     }
 
     /**
-     * @Route("/passage/ajouter", name="passage_ajout")
+     * @Route("/admin/passage/ajouter", name="passage_ajout")
      */
     public function ajouterPassages(Request $request): Response
     {
@@ -67,7 +67,7 @@ class PassageController extends AbstractController
     }
 
     /**
-     * @Route("/passage/modifier/{id}", name="passage_modifier")
+     * @Route("/admin/passage/modifier/{id}", name="passage_modifier")
      */
     public function modifierPassages(Request $request, int $id): Response
     {
