@@ -36,15 +36,21 @@ class DocumentRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Document
+    public function findTop($value)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orderBy('d.id', 'desc')
+            ->setMaxResults($value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+
+    public function findByTitle($value)
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.titre LIKE :val')
+            ->setParameter('val', '%' . $value . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -36,7 +36,7 @@
 			</form>
 		</div>
 	</section>
-	<section style="padding-top: 12px;">
+	<section class="map-section" style="padding-top: 12px;">
 		<div class="container">
 			<div class="row">
 				{% if emptyField %}
@@ -59,7 +59,13 @@
 								<h6 class="option-title">{{ itineraire.nom }}</h6>
 							</div>
 							<div class="option-check">
-								<button class="btn btn-primary btn-sm">{{ itineraire.statut }}</button>
+								{% if itineraire.statut == 'ACTIF' %}
+									<span class="badge badge-pill badge-success">{{ itineraire.statut }}</span>
+								{% elseif itineraire.statut == 'ARRET' %}
+									<span class="badge badge-pill badge-danger">{{ itineraire.statut }}</span>
+								{% else %}
+									<span class="badge badge-pill badge-secondary">{{ itineraire.statut }}</span>
+								{% endif %}
 							</div>
 						</div>
 					</div>
