@@ -23,8 +23,8 @@ class CompagnieController extends AbstractController
     }
 
     /**
-     * @Route("/compagnie", name="compagnie_liste_base")
-     * @Route("/compagnie/liste", name="compagnie_liste")
+     * @Route("/admin/compagnie", name="compagnie_liste_base")
+     * @Route("/admin/compagnie/liste", name="compagnie_liste")
      */
     public function listCompagnie(): Response
     {
@@ -35,7 +35,7 @@ class CompagnieController extends AbstractController
     }
 
     /**
-     * @Route("/compagnie/ajouter", name="compagnie_ajout")
+     * @Route("/admin/compagnie/ajouter", name="compagnie_ajout")
      */
     public function ajoutCompagnie(Request $request): Response
     {
@@ -58,7 +58,7 @@ class CompagnieController extends AbstractController
     }
 
     /**
-     * @Route("/compagnie/modifier/{id}", name="compagnie_modification")
+     * @Route("/admin/compagnie/modifier/{id}", name="compagnie_modification")
      */
     public function modifierCompagnie(Request $request, int $id): Response
     {

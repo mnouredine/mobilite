@@ -15,18 +15,13 @@ class Arret
 
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Itineraire", inversedBy="itineraire")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $itineraire;
 
     /**
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Passage", inversedBy="passage")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
@@ -41,11 +36,6 @@ class Arret
      * @ORM\Column(type="string", length=255)
      */
     private $statut;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getTemps(): ?string
     {
