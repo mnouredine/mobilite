@@ -89,4 +89,60 @@ class PassageController extends AbstractController
             'nomPassage' => $passage->getNom(),
         ]);
     }
+
+    /**
+     * @Route("/passage/autours/{coord}", name="passage_autours")
+     */
+    public function listArretsAutours(string $coord): Response
+    {
+        $passageAll = $this->passageRepository->findAll();
+        $passages = [];
+        // $dist = $this->distance($this->getLat($coord), $this->getlng($coord), $this->getLat($passages[0]->getCoordonnees()), $this->getLng($passages[0]->getCoordonnees()), 'K');
+        // return new Response($dist);
+        $dist = 0;
+        foreach ($passageAll as $passage) {
+            $dist = $this->distance($this->getLat($coord), $this->getlng($coord), $this->getLat($passage->getCoordonnees()), $this->getLng($passage->getCoordonnees()), 'K');
+            if ($dist <= $_ENV['NEARBY_DISTANCE']) array_push($passages, $passage);
+        }
+        return $this->render('passage/passages-autours.html.twig', [
+            'passages' => $passages,
+            'currentLocation' => $coord,
+        ]);
+    }
+
+    function distance($lat1, $lon1, $lat2, $lon2, $unit)
+    {
+        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+            return 0;
+        } else {
+            $theta = $lon1 - $lon2;
+            $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $unit = strtoupper($unit);
+
+            if ($unit == "K") {
+                return ($miles * 1.609344);
+            } else if ($unit == "N") {
+                return ($miles * 0.8684);
+            } else {
+                return $miles;
+            }
+        }
+    }
+
+    function getLat($latlng)
+    {
+        $arr = explode(',', $latlng);
+        if (sizeof($arr) !== 2) return 0;
+        return (float)$arr[0];
+    }
+
+    function getLng($latlng)
+    {
+        $arr = explode(',', $latlng);
+        if (sizeof($arr) !== 2) return 0;
+        return (float)$arr[1];
+    }
 }

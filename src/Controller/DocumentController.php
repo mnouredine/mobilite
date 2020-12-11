@@ -27,7 +27,7 @@ class DocumentController extends AbstractController
      */
     public function index(): Response
     {
-        $documents = $this->documentRepository->findAll();
+        $documents = $this->documentRepository->findTop(3);
         return $this->render('document/index.html.twig', [
             'documents' => $documents,
         ]);
@@ -98,6 +98,18 @@ class DocumentController extends AbstractController
         $document = $this->documentRepository->findOneBy(['id' => $id]);
         return $this->render('document/details-document.html.twig', [
             'document' => $document,
+        ]);
+    }
+
+    /**
+     * @Route("/document/recherche", name="document_recherche")
+     */
+    public function rechercheDocument(Request $request): Response
+    {
+        // return new Response($request->get('key'));
+        $documents = $this->documentRepository->findByTitle($request->get('key'));
+        return $this->render('document/index.html.twig', [
+            'documents' => $documents,
         ]);
     }
 }
