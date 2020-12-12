@@ -17,7 +17,9 @@
 						<tbody>
 							{% for compagnie in compagnies %}
 								<tr>
-									<th scope="row">{{ compagnie.logo }}</th>
+									<th scope="row">
+										<img src="{{ asset('assets/images/dummy_logo.png' )}}" height="40" alt="">
+									</th>
 									<td>{{ compagnie.nom }}</td>
 									<td>{{ compagnie.description }}</td>
 									<td>
