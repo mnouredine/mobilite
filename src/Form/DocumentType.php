@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Document;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,7 +17,7 @@ class DocumentType extends AbstractType
         $builder
             ->add('titre', TextareaType::class)
             ->add('legende', TextareaType::class)
-            ->add('contenu', TextareaType::class)
+            ->add('contenu', CKEditorType::class)
             ->add('description', TextareaType::class)
             ->add('info', TextareaType::class)
             ->add('save', SubmitType::class, array('label' => 'Enregistrer'));
