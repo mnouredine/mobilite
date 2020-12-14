@@ -1,0 +1,106 @@
+{% extends 'itineraire/itineraire-frame.html.twig' %}
+
+{% block subcontent %}
+	<section style="padding: 12px 0px;">
+		<div class="container">
+			<h3 id="titsel">Afficher les points d'arrêts
+				{% if itineraire_id is not empty %}
+					<a class="btn btn-warning btn-sm float-right font-weight-bold" data-toggle="modal" data-target="#ajout-arret">
+						<i class="fa fa-plus"></i>
+					</a>
+				{% endif %}
+			</h3>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<div class="form-group">
+						<label for="compagnie_select">Compagnie</label>
+						<select class="form-control" id="compagnie_select">
+							<option value="0">Choisir une compagnie</option>
+							{% for compagnie in compagnies %}
+								<option value="{{ compagnie.id }}" {% if compagnie.id == compagnie_id %} selected {% endif %}>{{ compagnie.nom }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="itineraire_select">Itineraire</label>
+						<select class="form-control" id="itineraire_select">
+							{% for itineraire in itineraires %}
+								<option value="{{ itineraire.id }}" {% if itineraire.id == itineraire_id %} selected {% endif %}>{{ itineraire.code }}
+									-
+									{{ itineraire.nom }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6 arret-list">
+					<div class="row" style="padding-left: 12px;">
+						{% for arret in arrets %}
+							<div class="card bus-stop col-12 mb-2">
+								<div class="row no-gutters" style="padding-top: 5px;">
+									<div class="col-md-1">
+										<img src="{{ asset('assets/images/bus-station.png' )}}" class="card-img" alt="Bus Station" width="30px">
+									</div>
+									<div class="col-md-11">
+										<div class="card-body" style="padding: 0px 12px 2px 6px;">
+											<h5 class="card-title" style="margin-bottom: 0px;">{{ arret.passage.nom }}</h5>
+											<p class="card-text">
+												<small class="text-muted">{{ arret.temps }}</small>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Modal -->
+	<div class="modal fade" id="ajout-arret" tabindex="-1" role="dialog" aria-labelledby="ajoutArretLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ajoutArretLabel">Suprimer document</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				{{ form_start(form, {'attr': {'id': 'itineraire_form'}}) }}
+				<div class="modal-body">
+					{{ form_errors(form) }}
+					{{ form_label(form.passage, "Arrêt de bus ", {'label_attr': {'class': 'form-label'}}) }}
+					<div class="form-group form-float">
+						<div class="form-line">
+							{{ form_widget(form.passage, {'attr': {'class': 'form-control' } }) }}
+							{{ form_errors(form.passage) }}
+						</div>
+					</div>
+					{{ form_label(form.statut, "Statut", {'label_attr': {'class': 'form-label'}}) }}
+					<div class="form-group form-float">
+						<div class="form-line">
+							{{ form_widget(form.statut, {'attr': {'class': 'form-control' } }) }}
+							{{ form_errors(form.statut) }}
+						</div>
+					</div>
+					{{ form_label(form.temps, "Heure de passage", {'label_attr': {'class': 'form-label'}}) }}
+					<div class="form-group form-float">
+						<div class="form-line">
+							{{ form_widget(form.temps, {'attr': {'class': 'form-control' } }) }}
+							{{ form_errors(form.temps) }}
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+						<i class="fa fa-ban"></i>
+						Annuler</button>
+					{{ form_widget(form.save, {'attr': {'class': 'btn btn-warning'}}) }}
+				</div>
+				{{ form_rest(form) }}
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

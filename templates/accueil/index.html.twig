@@ -1,62 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'header-frame.html.twig' %}
 
-{% block title %}Mobilité
+{% block title %}Accueil
 {% endblock %}
-
-{% block body %}
-	<section>
-		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-image: url(assets/images/niamey.jpg);"></div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-	</section>
+{% block tagline %}
+	<h3 style="color: #fff;">Trouvez plus facilement les horaires de passage et les arrêts des bus de l’université et de la SOTRUNI</h3>
+{% endblock %}
+{% block content %}
 	<section class="search-sec">
 		<div class="container">
-			<form action="#" method="post" novalidate="novalidate">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-								<label for="type" style="color: #fff;">Je cherche</label>
-								<select class="form-control search-slt" id="type">
-									<option>Une maison</option>
-									<option>Un appartement</option>
-								</select>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-								<label for="offer" style="color: #fff;">Pour</label>
-								<select class="form-control search-slt" id="offer">
-									<option>Location</option>
-									<option>Achat</option>
-									<option>Troc</option>
-								</select>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-								<label for="location" style="color: #fff;">Autours de</label>
-								<select class="form-control search-slt" id="location">
-									<option>Niamey</option>
-									<option>Tillabery</option>
-									<option>Tahoua</option>
-									<option>Maradi</option>
-									<option>Zinder</option>
-								</select>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-12 p-0">
-								<button type="button" class="btn btn-warning wrn-btn" style="margin-top: 31px;" routerlink="/housing">Recherche</button>
+			{% if app.request.get('_route') == 'recherche_itineraire' %}
+				<form action="{{ path('itineraire') }}" method="post" novalidate="novalidate">
+				{% else %}
+					<form action="{{ path('recherche_itineraire') }}" method="post" novalidate="novalidate">
+					{% endif %}
+					<div class="row">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-md-5 col-sm-12 p-0">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="home-form input-group-text">Départ:</div>
+										</div>
+										<input type="text" name="field_from" class="form-control search-slt" id="from">
+									</div>
+								</div>
+								<div class="col-md-5 col-sm-12 p-0">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="home-form input-group-text end">Arrivée:</div>
+										</div>
+										<input type="text" name="field_to" class="form-control search-slt" id="to">
+									</div>
+								</div>
+								<div class="col-md-2 col-sm-12 p-0">
+									<button type="submit" class="btn btn-default wrn-btn">Recherche</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
-	</section>
-{% endblock %}
+				</form>
+			</div>
+		</section>
+		<section class="map-section">
+			<div id="map" style="width: 100%; min-height: 50vh;"></div>
+		</section>
+	{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Login
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xs-12 col-md-4 text-center" style="margin-top: 5rem;">
+				<img src="{{ asset('assets/images/logo_dark.png' )}}" height="50" alt="">
+			</div>
+		</div>
+		<br/><br/>
+		<div class="row justify-content-center">
+			<div class="col-xs-12 col-md-4 login-form">
+				<h3 class="text-center">Connexion</h3>
+				{% if error %}
+					<div class="alert alert-danger" role="alert">
+						{{ error.messageKey|trans(error.messageData, 'security') }}
+					</div>
+				{% endif %}
+				<form action="{{ path("fos_user_security_check") }}" method="post">
+					{% if csrf_token %}
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+					{% endif %}
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-user"></i>
+							</span>
+						</div>
+						<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" class="form-control" placeholder="login ou email"/>
+					</div><br/>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-key"></i>
+							</span>
+						</div>
+						<input type="password" id="password" name="_password" required="required" autocomplete="current-password" class="form-control" placeholder="password"/>
+					</div><br/>
+					<div class="checkbox">
+						<label><input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+							Garder ma session active</label>
+					</div>
+					<input type="submit" id="_submit" name="_submit" value="CONNEXION" class="btn btn-warning" style="width: 100%; font-weight: 700;"/>
+					<br/>
+					<br/>
+					<div class="footer">
+						<p>
+							<a href="#">Mot de passe</a>
+							oublié
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block footer %}{% endblock %}

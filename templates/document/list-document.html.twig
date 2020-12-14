@@ -1,0 +1,63 @@
+{% extends 'document/document-frame.html.twig' %}
+
+{% block subcontent %}
+	<section style="padding-top: 12px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Titre</th>
+								<th scope="col">Légende</th>
+								<th scope="col">Info</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for document in documents %}
+								<tr>
+									<th scope="row">{{ document.titre }}</th>
+									<td>{{ document.legende }}</td>
+									<td>{{ document.info }}</td>
+									<td>
+										<a class="btn btn-info btn-sm" href="{{ path('document_modification', {id: document.id}) }}">
+											<i class="fa fa-edit"></i>
+										</a>
+										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+											<i class="fa fa-trash"></i>
+										</button>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Suprimer document</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Etes-vous sûr de vouloir suprimer le document
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+						<i class="fa fa-ban"></i>
+						Annuler</button>
+					<button type="button" class="btn btn-danger">
+						<i class="fa fa-trash"></i>
+						Suprimer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

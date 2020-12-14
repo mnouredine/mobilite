@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mobilité
+{% endblock %}
+{% block body %}
+	<nav class="navbar fixed-top navbar-expand-lg admin">
+		<div class="container">
+			<a class="navbar-brand" href="/">
+				<img src="{{ asset('assets/images/logo_dark.png' )}}" height="30" alt="">
+			</a>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fa fa-list"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav ml-auto admin">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-list"></i>
+								Entités
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="{{ path('compagnie_liste') }}">Compagnies</a>
+								<a class="dropdown-item" href="{{ path('itineraire_liste') }}">Itineraires</a>
+								<a class="dropdown-item" href="{{ path('passage_list') }}">Arrêts de bus</a>
+								<a class="dropdown-item" href="{{ path('document_list') }}">Documents de transport</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-user"></i>
+								{{ app.user.username }}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</nav>
+	{% block content %}{% endblock %}
+{% endblock %}

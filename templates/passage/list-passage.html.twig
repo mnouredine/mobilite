@@ -1,0 +1,43 @@
+{% extends 'passage/passage-frame.html.twig' %}
+
+{% block subcontent %}
+	<section style="padding-top: 12px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Nom</th>
+								<th scope="col">Description</th>
+								<th scope="col">Localisation</th>
+								<th scope="col">Compagnie</th>
+								<th scope="col">Quartier</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for passage in passages %}
+								<tr>
+									<th scope="row">{{ passage.nom }}</th>
+									<td>{{ passage.description }}</td>
+									<td>{{ passage.coordonnees }}</td>
+									<td>{{ passage.compagnie.nom }}</td>
+									<td>{{ passage.localite.nom }}</td>
+									<td>
+										<a class="btn btn-info btn-sm" href="{{ path('passage_modifier', {id: passage.id}) }}">
+											<i class="fa fa-edit"></i>
+										</a>
+										<a class="btn btn-danger btn-sm">
+											<i class="fa fa-trash"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

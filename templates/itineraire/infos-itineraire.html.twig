@@ -1,0 +1,44 @@
+{% extends 'infos-frame.html.twig' %}
+
+{% block title %}
+	{{ itineraire.nom }}
+{% endblock %}
+{% block heading %}
+	{{ itineraire.nom }}
+{% endblock %}
+{% block content %}
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="timeline-centered">
+							{% for arret in arrets %}
+								<article class="timeline-entry">
+									<div class="timeline-entry-inner">
+										<time class="timeline-time" datetime="2014-01-10T03:45">
+											<span>{{ arret.temps }}</span>
+											<span>5 min</span>
+										</time>
+										<div class="timeline-icon bg-success">
+											<i class="entypo-feather"></i>
+										</div>
+										<div class="timeline-label">
+											<h2>
+												<a href="#">{{ arret.passage.nom }}</a><br>
+												<span>{{ arret.passage.description }}</span>
+											</h2>
+										</div>
+									</div>
+								</article>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-8 full-width">
+				<div id="map" style="width: 100%; min-height: 70vh;"></div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

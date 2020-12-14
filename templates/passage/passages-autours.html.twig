@@ -1,0 +1,54 @@
+{% extends 'header-frame.html.twig' %}
+
+{% block title %}Arrêts de bus
+{% endblock %}
+
+{% block tagline %}
+	<h3 style="color: #fff;">Trouvez plus facilement les horaires de passage et les arrêts des bus de l’université et de la SOTRUNI</h3>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-md-4" style="background-color: #fff; min-height: 50vh; padding-top: 12px;">
+				<h3 class="text-center">Arrêts autours de moi</h3>
+				{% for passage in passages %}
+					<div class="card bus-stop">
+						<div class="row no-gutters">
+							<div class="col-2" style="padding: 10px;">
+								<img src="{{ asset('assets/images/bus-station.png' )}}" class="card-img" alt="Bus Station" width="50px">
+							</div>
+							<div class="col-10">
+								<div class="card-body" style="padding: 12px;">
+									<h5 class="card-title" style="margin-bottom: 0px;">{{ passage.nom }}</h5>
+									<p class="card-text">
+										<small class="text-muted">{{ passage.description }}</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div id="arret-map" class="col-xs-12 col-md-8 arret-map"></div>
+		</div>
+	</div>
+{% endblock %}
+{% block more_js %}
+	<script>
+		$(document).ready(function () {
+var arretMap = L.map('arret-map').setView([{{ currentLocation }}], 15);
+var baseMap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm91cm1vdW4iLCJhIjoiY2toZ2h6enVuMGx2OTJ4bndzNnZhbTA1MSJ9.ou3FRi4iWT-ct74OZkjSbA', {
+attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+maxZoom: 18,
+id: 'mapbox/streets-v11',
+tileSize: 512,
+zoomOffset: -1,
+accessToken: 'your.mapbox.access.token'
+});
+baseMap.addTo(arretMap);
+var marker = L.marker([{{ currentLocation }}]).addTo(arretMap).bindPopup('Vous êtes ici.').openPopup();{% for passage in passages %}
+L.marker([{{ passage.coordonnees }}]).addTo(arretMap);{% endfor %}
+});
+	</script>
+{% endblock %}

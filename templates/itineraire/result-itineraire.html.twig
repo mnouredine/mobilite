@@ -1,0 +1,76 @@
+{% extends 'header-frame.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block content %}
+	<section class="search-sec">
+		<div class="container">
+			<div class="row"></div>
+			<form action="#" method="post" novalidate="novalidate">
+				<div class="row">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-md-5 col-sm-12 p-0">
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="home-form input-group-text">Départ:</div>
+									</div>
+									<input type="text" class="form-control search-slt" id="from">
+								</div>
+							</div>
+							<div class="col-md-5 col-sm-12 p-0">
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="home-form input-group-text end">Arrivée:</div>
+									</div>
+									<input type="text" class="form-control search-slt" id="to">
+								</div>
+							</div>
+							<div class="col-md-2 col-sm-12 p-0">
+								<button type="button" class="btn btn-default wrn-btn">Recherche</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+	<section class="map-section" style="padding-top: 12px;">
+		<div class="container">
+			<div class="row">
+				{% if emptyField %}
+					<div class="col-12" style="min-height: 30vh; padding-top: 10vh;">
+						<h5 class="text-center">Aucun résultat trouvé !</h5>
+					</div>
+				{% endif %}
+				{% if itineraires is empty %}
+					<div class="col-12" style="min-height: 30vh; padding-top: 10vh;">
+						<h5 class="text-center">Aucun résultat trouvé !</h5>
+					</div>
+				{% endif %}
+				{% for itineraire in itineraires %}
+					<div class="col-12">
+						<div class="option mb-2 itineraire-item" data-id="{{ itineraire.id }}">
+							<div class="option-image">
+								<span style="font-weight: 900;">{{ itineraire.compagnie.nom }}</span>
+							</div>
+							<div class="option-info" style="padding-top: 3px">
+								<h6 class="option-title">{{ itineraire.nom }}</h6>
+							</div>
+							<div class="option-check">
+								{% if itineraire.statut == 'ACTIF' %}
+									<span class="badge badge-pill badge-success">{{ itineraire.statut }}</span>
+								{% elseif itineraire.statut == 'ARRET' %}
+									<span class="badge badge-pill badge-danger">{{ itineraire.statut }}</span>
+								{% else %}
+									<span class="badge badge-pill badge-secondary">{{ itineraire.statut }}</span>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

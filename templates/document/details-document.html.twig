@@ -1,0 +1,30 @@
+{% extends 'infos-frame.html.twig' %}
+
+{% block title %}
+	{{ document.titre }}
+{% endblock %}
+{% block heading %}
+	{{ document.titre }}
+{% endblock %}
+{% block content %}
+	<section class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<div class="doc-info mb-2 mt-3">
+					<p>{{ document.contenu | raw  }}</p>
+				</div>
+			</div>
+			{% if document.info %}
+				<div class="col-xs-12 col-md-4">
+					<div class="doc-info mb-2 mt-3">
+						{{ document.info }}
+					</div>
+				</div>
+			{% endif %}
+			<div class="col-12 mb-2">
+				<button class="btn btn-secondary back home-btn float-right" type="button">
+					Retour</button>
+			</div>
+		</div>
+	</section>
+{% endblock %}

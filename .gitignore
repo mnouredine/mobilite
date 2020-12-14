@@ -7,10 +7,16 @@
 /public/bundles/
 /var/
 /vendor/
+/config/packages/doctrine.yaml
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
+/.env
 .phpunit
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###

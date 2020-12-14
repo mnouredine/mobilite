@@ -1,0 +1,39 @@
+{% extends 'admin-frame.html.twig' %}
+
+{% block title %}Itinéraires
+{% endblock %}
+{% block tagline %}
+	<h3 style="color: #fff;">Trouvez plus facilement les horaires de passage et les arrêts des bus de l’université et de la SOTRUNI</h3>
+{% endblock %}
+{% block content %}
+	<section class="boar-menu">
+		<div class="container">
+			<div class="row menu-head">
+				<div class="col-xs-12 col-md-6 menu-title-section">
+					<img src="{{ asset('assets/images/direction.png' )}}" class="logo-icon" height="40" alt="Responsive image">
+					<span class="title">Itinéraires</span>
+				</div>
+				{% if app.request.get('_route') == 'itineraire_liste' %}
+					<div class="col-xs-12 col-md-6 menu-button-section">
+						<a class="btn btn-warning btn-sm float-right font-weight-bold" href="{{ path('itineraire_ajout') }}">
+							<i class="fa fa-plus"></i>
+							Ajouter un itineraire</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	<section style="background-color: #fff">
+		<div class="container">
+			<ul class="nav nav-tabs sub-menu">
+				<li class="nav-item">
+					<a class="nav-link {% if app.request.get('_route') == 'itineraire_liste' %} active {% endif %}" href="{{ path('itineraire_liste') }}">Tous les Itinéraires</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {% if app.request.get('_route') == 'itineraire_arret' %} active {% endif %}" href="{{ path('itineraire_arret') }}">Points d'arrêt</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+	{% block subcontent %}{% endblock %}
+{% endblock %}
